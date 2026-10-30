@@ -1,0 +1,1197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b1c">
+<title>CareerVerse | Your Mission to Get Hired</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #070b1c;
+  --panel: rgba(17,25,52,.76);
+  --border: rgba(139,160,255,.18);
+  --cyan: #56e7ff;
+  --purple: #a78bfa;
+  --pink: #ff79c6;
+  --white: #f4f5ff;
+  --muted: #9ba8c9;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior:smooth; scroll-padding-top:90px; }
+
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:Inter,sans-serif;
+  overflow-x:hidden;
+}
+
+a { color:inherit; text-decoration:none; }
+
+#stars {
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  pointer-events:none;
+}
+
+.nebula {
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 15% 15%,rgba(90,50,180,.18),transparent 42%),
+    radial-gradient(ellipse at 85% 45%,rgba(0,190,255,.12),transparent 40%),
+    radial-gradient(ellipse at 50% 100%,rgba(110,60,190,.15),transparent 45%);
+  animation:nebulaMove 14s ease-in-out infinite alternate;
+}
+
+@keyframes nebulaMove {
+  to { filter:hue-rotate(35deg); transform:scale(1.08); }
+}
+
+.shooting-star {
+  position:fixed;
+  width:130px;
+  height:2px;
+  background:linear-gradient(90deg,white,transparent);
+  transform:rotate(-35deg);
+  z-index:-1;
+  animation:shoot 5s linear infinite;
+  opacity:0;
+}
+
+.shooting-star:nth-child(2) { top:20%; left:75%; animation-delay:2s; }
+.shooting-star:nth-child(3) { top:65%; left:90%; animation-delay:4s; }
+
+@keyframes shoot {
+  0% { transform:translate(0,0) rotate(-35deg); opacity:0; }
+  10% { opacity:1; }
+  35% { transform:translate(-450px,250px) rotate(-35deg); opacity:0; }
+  100% { opacity:0; }
+}
+
+/* NAVIGATION */
+
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 7%;
+  background:rgba(7,11,28,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+}
+
+.logo {
+  font-family:Orbitron,sans-serif;
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.logo span { color:var(--cyan); }
+
+.nav-links {
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+
+.nav-links a {
+  font-size:12px;
+  color:var(--muted);
+  transition:.3s;
+}
+
+.nav-links a:hover { color:var(--cyan); }
+
+.menu-btn {
+  display:none;
+  background:none;
+  color:white;
+  border:0;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:13px 22px;
+  border:1px solid var(--cyan);
+  border-radius:9px;
+  background:linear-gradient(110deg,rgba(86,231,255,.16),rgba(167,139,250,.16));
+  color:white;
+  font-weight:700;
+  font-size:12px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 0 25px rgba(86,231,255,.3);
+}
+
+.btn.primary {
+  background:linear-gradient(110deg,#23bfe4,#795bdb);
+  border:0;
+}
+
+/* HERO */
+
+.hero {
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:130px 20px 80px;
+  position:relative;
+}
+
+.planet {
+  position:absolute;
+  width:170px;
+  height:170px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,#a5c9ff,#5a4bba 35%,#1c174a 75%);
+  box-shadow:0 0 65px rgba(120,100,255,.35);
+  right:10%;
+  top:24%;
+  animation:float 7s ease-in-out infinite;
+}
+
+.planet::after {
+  content:"";
+  position:absolute;
+  width:230px;
+  height:45px;
+  border:5px solid rgba(132,215,255,.6);
+  border-radius:50%;
+  top:65px;
+  left:-30px;
+  transform:rotate(-25deg);
+}
+
+@keyframes float {
+  50% { transform:translateY(-25px) rotate(10deg); }
+}
+
+.hero-content {
+  max-width:850px;
+  z-index:2;
+}
+
+.eyebrow {
+  display:inline-block;
+  padding:9px 16px;
+  border:1px solid var(--border);
+  border-radius:30px;
+  color:var(--cyan);
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:25px;
+  background:rgba(86,231,255,.06);
+}
+
+.hero h1 {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(36px,7vw,76px);
+  line-height:1.15;
+  margin-bottom:20px;
+}
+
+.gradient {
+  background:linear-gradient(100deg,#57e8ff,#a78bfa,#ff8acb);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  color:var(--muted);
+  max-width:650px;
+  margin:0 auto 30px;
+  line-height:1.8;
+  font-size:15px;
+}
+
+.hero-actions {
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.scroll-hint {
+  position:absolute;
+  bottom:25px;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:2px;
+  animation:float 3s infinite;
+}
+
+/* COMMON */
+
+section {
+  padding:90px 7%;
+}
+
+.section-heading {
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-heading small {
+  color:var(--cyan);
+  letter-spacing:3px;
+  font-size:10px;
+  font-weight:700;
+}
+
+.section-heading h2 {
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(24px,4vw,36px);
+  margin:14px 0;
+}
+
+.section-heading p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.card {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:25px;
+  transition:.35s;
+  backdrop-filter:blur(12px);
+}
+
+.card:hover {
+  transform:translateY(-7px);
+  border-color:var(--cyan);
+  box-shadow:0 10px 40px rgba(86,231,255,.09);
+}
+
+.icon {
+  font-size:30px;
+  margin-bottom:17px;
+}
+
+.card h3 {
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.card p {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.8;
+}
+
+.tag {
+  display:inline-block;
+  color:var(--cyan);
+  background:rgba(86,231,255,.09);
+  border-radius:20px;
+  padding:6px 10px;
+  font-size:10px;
+  margin-top:16px;
+}
+
+/* MISSION PROGRESS */
+
+.progress-panel {
+  background:linear-gradient(120deg,rgba(37,64,113,.45),rgba(76,44,120,.35));
+  border:1px solid var(--border);
+  padding:30px;
+  border-radius:18px;
+  margin-bottom:35px;
+}
+
+.progress-top {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.progress-track {
+  width:100%;
+  height:10px;
+  border-radius:20px;
+  background:#202945;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  transition:width .5s;
+  border-radius:20px;
+}
+
+.mission-list {
+  display:grid;
+  gap:13px;
+}
+
+.mission {
+  display:flex;
+  gap:13px;
+  align-items:flex-start;
+  padding:15px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:rgba(15,23,47,.7);
+  font-size:13px;
+  cursor:pointer;
+}
+
+.mission input {
+  accent-color:#56e7ff;
+  width:17px;
+  height:17px;
+  margin-top:2px;
+}
+
+.mission.done span {
+  text-decoration:line-through;
+  color:#7786a7;
+}
+
+/* ROUNDS */
+
+.round-number {
+  font-family:Orbitron,sans-serif;
+  font-size:12px;
+  color:var(--cyan);
+  margin-bottom:15px;
+}
+
+.card ul {
+  padding-left:17px;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:2;
+}
+
+/* RESOURCES */
+
+.resource-search {
+  display:block;
+  width:100%;
+  max-width:450px;
+  margin:0 auto 30px;
+  padding:14px 18px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#101a35;
+  color:white;
+  outline:none;
+}
+
+.resource-search:focus { border-color:var(--cyan); }
+
+.resource-card {
+  display:flex;
+  flex-direction:column;
+  min-height:200px;
+}
+
+.resource-card .resource-link {
+  margin-top:auto;
+  padding-top:18px;
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:700;
+}
+
+.resource-card .resource-link:hover { color:white; }
+
+.resource-card.hidden { display:none; }
+
+/* INTERVIEW TIPS */
+
+.tip {
+  border-left:3px solid var(--cyan);
+  padding:15px 20px;
+  background:rgba(86,231,255,.05);
+  margin-bottom:14px;
+  border-radius:0 10px 10px 0;
+}
+
+.tip h3 { font-size:14px; margin-bottom:7px; }
+.tip p { color:var(--muted); font-size:12px; line-height:1.8; }
+
+/* QUOTES */
+
+.quote-section {
+  text-align:center;
+  background:linear-gradient(140deg,rgba(56,50,130,.3),rgba(15,24,51,.3));
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.quote {
+  max-width:750px;
+  margin:auto;
+  font-family:Orbitron,sans-serif;
+  font-size:clamp(19px,3vw,30px);
+  line-height:1.6;
+  min-height:100px;
+}
+
+.quote-author {
+  color:var(--cyan);
+  font-size:12px;
+  margin-top:20px;
+}
+
+.quote-button { margin-top:25px; }
+
+footer {
+  text-align:center;
+  padding:35px 20px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:2;
+}
+
+footer span { color:var(--cyan); }
+
+.reveal {
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media(max-width:800px) {
+  .planet {
+    width:90px;
+    height:90px;
+    right:4%;
+    top:15%;
+    opacity:.55;
+  }
+
+  .planet::after {
+    width:125px;
+    height:25px;
+    top:32px;
+    left:-18px;
+  }
+
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:65px;
+    left:0;
+    width:100%;
+    padding:25px;
+    background:#0b1129;
+    flex-direction:column;
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav-links.open { display:flex; }
+  .menu-btn { display:block; }
+  nav { padding:17px 5%; }
+  section { padding:70px 5%; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+<div class="nebula"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+
+<nav>
+  <a href="#home" class="logo">CAREER<span>VERSE</span> 🚀</a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#rounds">Interview Rounds</a>
+    <a href="#resources">Resources</a>
+    <a href="#tips">Tips</a>
+  </div>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+  <div class="planet"></div>
+
+  <div class="hero-content">
+    <div class="eyebrow">✦ YOUR CAREER MISSION STARTS HERE ✦</div>
+
+    <h1>
+      YOUR FUTURE IS<br>
+      <span class="gradient">BEYOND THE STARS.</span>
+    </h1>
+
+    <p>
+      Welcome to CareerVerse. Your personal mission control for
+      mastering technical skills, cracking placement interviews,
+      and launching your software engineering career.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#roadmap" class="btn primary">🚀 START YOUR MISSION</a>
+      <a href="#resources" class="btn">📚 EXPLORE RESOURCES</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">↓ SCROLL TO EXPLORE THE GALAXY ↓</div>
+</header>
+
+<!-- ROADMAP -->
+
+<section id="roadmap">
+  <div class="section-heading">
+    <small>YOUR JOURNEY</small>
+    <h2>Mission <span class="gradient">Roadmap</span></h2>
+    <p>Every great engineer starts somewhere. Complete each mission.</p>
+  </div>
+
+  <div class="progress-panel">
+    <div class="progress-top">
+      <div>
+        <h3>🚀 Mission Completion</h3>
+        <p style="color:var(--muted);font-size:12px;margin-top:7px">
+          Track your interview preparation journey.
+        </p>
+      </div>
+      <strong id="progressText" style="color:var(--cyan)">0%</strong>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p id="missionCount" style="color:var(--muted);font-size:11px;margin-top:12px">
+      0 missions completed
+    </p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="icon">🧠</div>
+      <h3>01. Build Your Foundation</h3>
+      <p>Understand programming fundamentals, logic building, and problem-solving.</p>
+      <span class="tag">BEGINNER</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">💻</div>
+      <h3>02. Master Core Subjects</h3>
+      <p>Study OOPS, DBMS, Operating Systems, and Computer Networks.</p>
+      <span class="tag">CORE CS</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">⚡</div>
+      <h3>03. Become a Problem Solver</h3>
+      <p>Practice DSA, coding problems, SQL queries, and aptitude.</p>
+      <span class="tag">PRACTICE</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🌐</div>
+      <h3>04. Develop Projects</h3>
+      <p>Build practical projects and prepare to explain your architecture and decisions.</p>
+      <span class="tag">PROJECTS</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🎤</div>
+      <h3>05. Crack Interviews</h3>
+      <p>Practice GD, technical interviews, coding rounds, and HR questions.</p>
+      <span class="tag">INTERVIEWS</span>
+    </article>
+
+    <article class="card">
+      <div class="icon">🏆</div>
+      <h3>06. Launch Your Career</h3>
+      <p>Apply consistently, communicate confidently, and secure your dream offer.</p>
+      <span class="tag">DESTINATION</span>
+    </article>
+  </div>
+
+  <h3 style="margin:40px 0 18px;font-family:Orbitron;font-size:16px">
+    📋 YOUR DAILY MISSION CHECKLIST
+  </h3>
+
+  <div class="mission-list" id="missionList">
+    <label class="mission"><input type="checkbox"><span>Practice aptitude for 30 minutes.</span></label>
+    <label class="mission"><input type="checkbox"><span>Solve at least 2 DSA problems.</span></label>
+    <label class="mission"><input type="checkbox"><span>Study one core CS concept.</span></label>
+    <label class="mission"><input type="checkbox"><span>Practice Python or C++ coding.</span></label>
+    <label class="mission"><input type="checkbox"><span>Practice 5 SQL queries.</span></label>
+    <label class="mission"><input type="checkbox"><span>Revise one interview question.</span></label>
+    <label class="mission"><input type="checkbox"><span>Spend time improving your project.</span></label>
+    <label class="mission"><input type="checkbox"><span>Read or practice communication skills.</span></label>
+  </div>
+</section>
+
+<!-- INTERVIEW ROUNDS -->
+
+<section id="rounds">
+  <div class="section-heading">
+    <small>THE BATTLEFIELD</small>
+    <h2>Interview <span class="gradient">Rounds</span></h2>
+    <p>Know what to expect and how to clear every stage.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="round-number">ROUND 01 / APTITUDE</div>
+      <div class="icon">🧮</div>
+      <h3>Quantitative & Logical Reasoning</h3>
+      <p>Companies use aptitude tests to evaluate numerical ability, reasoning, and speed.</p>
+      <ul>
+        <li>Percentages and ratios</li>
+        <li>Time, speed and distance</li>
+        <li>Probability</li>
+        <li>Number series</li>
+        <li>Logical reasoning</li>
+      </ul>
+      <span class="tag">TIP: PRACTICE DAILY</span>
+    </article>
+
+    <article class="card">
+      <div class="round-number">ROUND 02 / GROUP DISCUSSION</div>
+      <div class="icon">🗣️</div>
+      <h3>Group Discussion</h3>
+      <p>Demonstrate communication, teamwork, confidence, and structured thinking.</p>
+      <ul>
+        <li>Understand the topic</li>
+        <li>Start with a clear introduction</li>
+        <li>Give logical arguments</li>
+        <li>Respect others' opinions</li>
+        <li>Summarize effectively</li>
+      </ul>
+      <span class="tag">TIP: BE CLEAR, NOT LOUD</span>
+    </article>
+
+    <article class="card">
+      <div class="round-number">ROUND 03 / TECHNICAL</div>
+      <div class="icon">💻</div>
+      <h3>Technical Interview</h3>
+      <p>Show that you understand computer science fundamentals and can explain your work.</p>
+      <ul>
+        <li>OOPS concepts</li>
+        <li>DBMS and SQL</li>
+        <li>Operating Systems</li>
+        <li>Computer Networks</li>
+        <li>Programming fundamentals</li>
+        <li>Projects and technologies</li>
+      </ul>
+      <span class="tag">TIP: UNDERSTAND, DON'T MEMORIZE</span>
+    </article>
+
+    <article class="card">
+      <div class="round-number">ROUND 04 / CODING</div>
+      <div class="icon">⌨️</div>
+      <h3>Coding Assessment</h3>
+      <p>Demonstrate your ability to write correct, efficient, and readable code.</p>
+      <ul>
+        <li>Arrays and strings</li>
+        <li>Sorting and searching</li>
+        <li>Loops and functions</li>
+        <li>Basic recursion</li>
+        <li>DSA problem-solving</li>
+      </ul>
+      <span class="tag">TIP: EXPLAIN YOUR APPROACH</span>
+    </article>
+
+    <article class="card">
+      <div class="round-number">ROUND 05 / HR</div>
+      <div class="icon">🤝</div>
+      <h3>HR Interview</h3>
+      <p>Demonstrate your attitude, professionalism, motivation, and communication.</p>
+      <ul>
+        <li>Tell me about yourself</li>
+        <li>Why should we hire you?</li>
+        <li>Your strengths and weaknesses</li>
+        <li>Why this company?</li>
+        <li>Career goals</li>
+      </ul>
+      <span class="tag">TIP: BE AUTHENTIC</span>
+    </article>
+
+    <article class="card">
+      <div class="round-number">FINAL DESTINATION</div>
+      <div class="icon">🏆</div>
+      <h3>Offer Letter</h3>
+      <p>Congratulations! You have successfully completed your recruitment mission.</p>
+      <ul>
+        <li>Review the offer</li>
+        <li>Understand compensation</li>
+        <li>Check role and responsibilities</li>
+        <li>Understand joining conditions</li>
+      </ul>
+      <span class="tag">MISSION ACCOMPLISHED</span>
+    </article>
+  </div>
+</section>
+
+<!-- TECHNICAL PREPARATION -->
+
+<section id="technical">
+  <div class="section-heading">
+    <small>KNOWLEDGE IS YOUR WEAPON</small>
+    <h2>Technical <span class="gradient">Preparation</span></h2>
+    <p>Important topics to prepare before attending a technical interview.</p>
+  </div>
+
+  <div class="grid">
+    <article class="card">
+      <div class="icon">⚙️</div>
+      <h3>Operating Systems</h3>
+      <p>Processes, threads, scheduling, deadlocks, memory management, paging, virtual memory.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🌐</div>
+      <h3>Computer Networks</h3>
+      <p>OSI model, TCP/IP, DNS, HTTP/HTTPS, TCP vs UDP, IP addressing, routing.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🗄️</div>
+      <h3>DBMS</h3>
+      <p>Keys, normalization, joins, transactions, ACID properties, indexing, ER diagrams.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🧩</div>
+      <h3>OOPS</h3>
+      <p>Encapsulation, inheritance, polymorphism, abstraction, constructors, overloading.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🐍</div>
+      <h3>Python</h3>
+      <p>Data types, loops, functions, lists, dictionaries, OOPS, exceptions, file handling.</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🔍</div>
+      <h3>DSA</h3>
+      <p>Arrays, strings, linked lists, stacks, queues, trees, sorting, searching, complexity.</p>
+    </article>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+
+<section id="resources">
+  <div class="section-heading">
+    <small>YOUR LEARNING LIBRARY</small>
+    <h2>Mission <span class="gradient">Resources</span></h2>
+    <p>Your selected YouTube learning materials. Choose a subject and start learning.</p>
+  </div>
+
+  <input
+    type="search"
+    class="resource-search"
+    id="resourceSearch"
+    placeholder="🔎 Search OS, Python, SQL, DSA..."
+    aria-label="Search learning resources"
+  >
+
+  <div class="grid" id="resourceGrid">
+
+    <article class="card resource-card">
+      <div class="icon">⚙️</div>
+      <h3>Operating Systems</h3>
+      <p>Understand processes, memory management, scheduling and operating system fundamentals.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/8XBtAjKwCm4?si=99ntEmFD7FbMzRql">▶ WATCH RESOURCE 
+01</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🌐</div>
+      <h3>Computer Networks</h3>
+      <p>Learn network architecture, protocols, communication and networking fundamentals.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/0u66_vNiRlo?si=mSzzkn5FL-hlTpLa">▶ WATCH RESOURCE 02</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🗄️</div>
+      <h3>DBMS</h3>
+      <p>Study databases, relationships, keys, normalization and transactions.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/YeYl-s7KAFM?si=IdYfihVwhmeAu5x62">▶ WATCH RESOURCE 03</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🧩</div>
+      <h3>OOPS</h3>
+      <p>Build a strong understanding of object-oriented programming concepts.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/mlIUKyZIUUU?si=A0vqkK7WZx53doN1">▶ WATCH RESOURCE 04</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🐍</div>
+      <h3>Python — Part 1</h3>
+      <p>Start learning Python programming and strengthen your fundamentals.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/vLqTf2b6GZw?si=uPC3GnUieGXsgnmW">▶ WATCH PART 01</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🐍</div>
+      <h3>Python — Part 2</h3>
+      <p>Continue your Python learning journey with the second resource.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/ERCMXc8x7mc?si=Bnvbmw8KB45-DnYG">▶ WATCH PART 02</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🛢️</div>
+      <h3>SQL — Part 1</h3>
+      <p>Learn queries, filtering, sorting and database operations.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/hlGoQC332VM?si=ONx8mei1Eo9kXYGV">▶ WATCH PART 01</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🛢️</div>
+      <h3>SQL — Part 2</h3>
+      <p>Continue with SQL concepts and improve your database query skills.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/yE6tIle64tU?si=VddePE9vMf3eoR1N">▶ WATCH PART 02</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🌍</div>
+      <h3>Web Development</h3>
+      <p>Learn web development concepts and build your development skills.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtu.be/F9gB5b4jgOI?si=SErMxWXog8yiX7Kk">▶ WATCH RESOURCE</a>
+    </article>
+
+    <article class="card resource-card">
+      <div class="icon">🧠</div>
+      <h3>DSA — Complete Playlist</h3>
+      <p>Practice data structures and algorithms through this dedicated playlist.</p>
+      <a class="resource-link" target="_blank" rel="noopener noreferrer"
+         href="https://youtube.com/playlist?list=PLfqMhTWNBTe137I_EPQd34TsgV6IO55pt&si=RargRTZZtC_-wOvk">▶ OPEN PLAYLIST</a>
+    </article>
+
+  </div>
+</section>
+
+<!-- INTERVIEW TIPS -->
+
+<section id="tips">
+  <div class="section-heading">
+    <small>STRATEGY & EXECUTION</small>
+    <h2>How to <span class="gradient">Clear Interviews</span></h2>
+    <p>Small improvements in preparation can make a big difference.</p>
+  </div>
+
+  <div style="max-width:850px;margin:auto">
+    <div class="tip">
+      <h3>01. Research the company</h3>
+      <p>Understand its products, services, business model, role requirements and recent developments.</p>
+    </div>
+
+    <div class="tip">
+      <h3>02. Prepare your resume</h3>
+      <p>Be ready to explain every skill, project, internship and achievement mentioned in your resume.</p>
+    </div>
+
+    <div class="tip">
+      <h3>03. Master your projects</h3>
+      <p>Explain the problem, architecture, technology stack, your contribution, challenges and outcomes.</p>
+    </div>
+
+    <div class="tip">
+      <h3>04. Practice mock interviews</h3>
+      <p>Simulate real interview conditions. Practice speaking your answers instead of only reading them.</p>
+    </div>
+
+    <div class="tip">
+      <h3>05. Communicate confidently</h3>
+      <p>If you don't know something, admit it honestly and explain how you would approach learning it.</p>
+    </div>
+
+    <div class="tip">
+      <h3>06. Revise consistently</h3>
+      <p>Use active recall, coding practice and short revision sessions to retain concepts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MOTIVATION -->
+
+<section class="quote-section">
+  <div class="section-heading">
+    <small>YOUR FINAL TRANSMISSION</small>
+    <h2>Words for the <span class="gradient">Journey</span></h2>
+  </div>
+
+  <div class="quote" id="quote">
+    "The secret of getting ahead is getting started."
+  </div>
+
+  <div class="quote-author" id="quoteAuthor">— Mark Twain</div>
+
+  <button class="btn quote-button" id="quoteBtn">✨ NEW MOTIVATION</button>
+</section>
+
+<footer>
+  <div class="logo">CAREER<span>VERSE</span> 🚀</div>
+  <p>Designed for dreamers. Built for future engineers.</p>
+  <p>Keep learning. Keep building. Keep moving forward.</p>
+  <p style="margin-top:15px">© 2026 CareerVerse | YOUR CAREER, YOUR MISSION.</p>
+</footer>
+
+<script>
+// STAR FIELD ANIMATION
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let stars = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  stars = Array.from({
+    length: Math.min(180, Math.floor(window.innerWidth / 5))
+  }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 1.8,
+    speed: Math.random() * .35 + .08,
+    alpha: Math.random()
+  }));
+}
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach(star => {
+    star.y += star.speed;
+
+    if (star.y > canvas.height) {
+      star.y = 0;
+      star.x = Math.random() * canvas.width;
+    }
+
+    star.alpha += (Math.random() - .5) * .06;
+    star.alpha = Math.max(.2, Math.min(1, star.alpha));
+
+    ctx.fillStyle = `rgba(190,220,255,${star.alpha})`;
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animateStars);
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+animateStars();
+
+// MOBILE MENU
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+  });
+});
+
+// MISSION CHECKLIST
+
+const checkboxes = [...document.querySelectorAll("#missionList input")];
+
+const progressFill = document.getElementById("progressFill");
+const progressText = document.getElementById("progressText");
+const missionCount = document.getElementById("missionCount");
+
+function updateProgress() {
+  const completed = checkboxes.filter(box => box.checked).length;
+
+  const percentage = Math.round(
+    completed / checkboxes.length * 100
+  );
+
+  progressFill.style.width = percentage + "%";
+  progressText.textContent = percentage + "%";
+
+  missionCount.textContent =
+    `${completed} of ${checkboxes.length} missions completed`;
+
+  checkboxes.forEach(box => {
+    box.closest(".mission").classList.toggle("done", box.checked);
+  });
+
+  localStorage.setItem(
+    "careerVerseProgress",
+    JSON.stringify(checkboxes.map(box => box.checked))
+  );
+}
+
+try {
+  const saved = JSON.parse(
+    localStorage.getItem("careerVerseProgress") || "[]"
+  );
+
+  checkboxes.forEach((box, i) => {
+    box.checked = saved[i] === true;
+  });
+} catch (error) {
+  console.warn("Could not restore mission progress.");
+}
+
+checkboxes.forEach(box => {
+  box.addEventListener("change", updateProgress);
+});
+
+updateProgress();
+
+// RESOURCE SEARCH
+
+const searchInput = document.getElementById("resourceSearch");
+const resourceCards = document.querySelectorAll(".resource-card");
+
+searchInput.addEventListener("input", () => {
+  const search = searchInput.value.toLowerCase().trim();
+
+  resourceCards.forEach(card => {
+    card.classList.toggle(
+      "hidden",
+      !card.textContent.toLowerCase().includes(search)
+    );
+  });
+});
+
+// SCROLL REVEAL
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: .1 });
+
+document.querySelectorAll(".card,.tip,.progress-panel").forEach(element => {
+  element.classList.add("reveal");
+  observer.observe(element);
+});
+
+// MOTIVATIONAL QUOTES
+
+const quotes = [
+  {
+    text: "The secret of getting ahead is getting started.",
+    author: "Mark Twain"
+  },
+  {
+    text: "Great things are done by a series of small things brought together.",
+    author: "Vincent van Gogh"
+  },
+  {
+    text: "It always seems impossible until it's done.",
+    author: "Nelson Mandela"
+  },
+  {
+    text: "Success is the sum of small efforts repeated day in and day out.",
+    author: "Robert Collier"
+  },
+  {
+    text: "Dream big. Start small. Act now.",
+    author: "Robin Sharma"
+  },
+  {
+    text: "Your future is created by what you do today, not tomorrow.",
+    author: "Robert Kiyosaki"
+  },
+  {
+    text: "Don't watch the clock; do what it does. Keep going.",
+    author: "Sam Levenson"
+  },
+  {
+    text: "Believe you can and you're halfway there.",
+    author: "Theodore Roosevelt"
+  }
+];
+
+let quoteIndex = 0;
+
+document.getElementById("quoteBtn").addEventListener("click", () => {
+  quoteIndex = (quoteIndex + 1) % quotes.length;
+
+  document.getElementById("quote").textContent =
+    `"${quotes[quoteIndex].text}"`;
+
+  document.getElementById("quoteAuthor").textContent =
+    "— " + quotes[quoteIndex].author;
+});
+</script>
+
+</body>
+</html>
